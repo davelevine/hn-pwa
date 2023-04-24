@@ -5,7 +5,7 @@ import useFetch from "../Helpers/useFetch";
 
 function Home({ sort }) {
   const { pageNum = 1 } = useParams();
-  const [loading, res, error] = useFetch(`https://api.hackerwebapp.com/${sort}?page=${pageNum}`);
+  const [loading, res, error] = useFetch(`https://api.xdv.com/${sort}?page=${pageNum}`);
 
   return (
     error || loading ||
