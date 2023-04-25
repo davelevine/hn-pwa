@@ -47,10 +47,10 @@ function ResultInfo({ user, numComments, timeAgo, time, id }) {
 
 function Result({ children: [metaData, title, postInfo] }) {
   return (
-    <div className="flex flex-col px-4 py-6 sm:items-center sm:flex-row">
+    <div className="flex flex-col px-4 py-4 sm:items-center sm:flex-row">
       {metaData}
 
-      <div className="flex flex-col space-y-2">
+      <div className="flex flex-col space-y-0">
         {title}
         {postInfo}
       </div>

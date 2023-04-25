@@ -9,8 +9,8 @@ module.exports = {
         'sm': '0.9125rem',
       },
       fontFamily: {
-        sans: ['Roboto', 'sans-serif'],
-        mono: ['Roboto Mono', 'monospace']
+        sans: ['DomaineText-Regular', 'serif'],
+        mono: ['Ligalex-Mono', 'monospace']
       },
       colors: {
         blue: {
