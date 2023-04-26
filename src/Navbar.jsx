@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function NavItem({ children: item }) {
   return (
-    <div className="px-3.5 py-2 rounded-md cursor-pointer hover:bg-black dark:hover:bg-white hover:bg-opacity-10 font-medium">
+    <div className="px-4 py-2 rounded-md cursor-pointer hover:bg-black dark:hover:bg-white hover:bg-opacity-10 font-medium">
       {item}
     </div>
   );
