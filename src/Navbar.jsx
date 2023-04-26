@@ -22,7 +22,7 @@ function Navbar({ children: navItems }) {
       </Link>
 
       {/* Nav links */}
-      <div className="flex flex-row space-x-1 sm:space-x-3">
+      <div className="flex flex-row space-x-0.5 sm:space-x-3">
         {navItems}
       </div>
     </nav>
