@@ -5,7 +5,7 @@ import { CommentIcon } from "./Icons";
 function ResultTitle({ children: title, domain, url }) {
   return (
     <div className="flex flex-row flex-wrap items-center">
-      <a className="mr-2 font-bold" href={domain ? url : url.replace("item?id=", "/item/")} target="_blank" rel="nofollow noopener noreferrer">
+      <a className="mr-2.5 font-bold" href={domain ? url : url.replace("item?id=", "/item/")} target="_blank" rel="nofollow noopener noreferrer">
         {title}
       </a>
       <div className="text-xs text-black dark:text-white text-opacity-80">({domain ? domain : "self.hackernews"})</div>
@@ -30,11 +30,11 @@ function ResultInfo({ user, numComments, timeAgo, time, id }) {
         <span title={(new Date(time * 1000)).toLocaleString()}>
           {timeAgo}
         </span>
-        {user && <span> by <Link className="ml-0.5 hover:text-black dark:hover:text-white" to={`/user/${user}`}><b>{user}</b></Link></span>}
+        {user && <span> by <Link className="ml-1.5 hover:text-black dark:hover:text-white" to={`/user/${user}`}><b>{user}</b></Link></span>}
       </div>
 
       <Link to={`/item/${id}`}>
-        <div className="pl-2">
+        <div className="pl-3">
           <div className="flex flex-row items-center py-1 rounded hover:text-black dark:hover:text-white">
             <CommentIcon size={15} /> {numComments} {numComments === 1 ? "comment" : "comments"}
           </div>
