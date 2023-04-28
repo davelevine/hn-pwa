@@ -16,90 +16,90 @@ body {
 }
 
 @font-face {
-    font-family: 'DomaineText-Regular';
-    src: url('https://cdn.levine.org/uploads/fonts/Klim+Fonts/Domaine+Text/web-fonts/domaine-text-black.woff2') format('woff2');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'DomaineText-Regular';
-    src: url('https://cdn.levine.org/uploads/fonts/Klim+Fonts/Domaine+Text/web-fonts/domaine-text-black-italic.woff2') format('woff2');
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'DomaineText-Regular';
-    src: url('https://cdn.levine.org/uploads/fonts/Klim+Fonts/Domaine+Text/web-fonts/domaine-text-bold-italic.woff2') format('woff2');
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'DomaineText-Regular';
-    src: url('https://cdn.levine.org/uploads/fonts/Klim+Fonts/Domaine+Text/web-fonts/domaine-text-bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'DomaineText-Regular';
-    src: url('https://cdn.levine.org/uploads/fonts/Klim+Fonts/Domaine+Text/web-fonts/domaine-text-medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'DomaineText-Regular';
-    src: url('https://cdn.levine.org/uploads/fonts/Klim+Fonts/Domaine+Text/web-fonts/domaine-text-medium-italic.woff2') format('woff2');
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'DomaineText-Regular';
-    src: url('https://cdn.levine.org/uploads/fonts/Klim+Fonts/Domaine+Text/web-fonts/domaine-text-regular-italic.woff2') format('woff2');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'DomaineText-Regular';
-    src: url('https://cdn.levine.org/uploads/fonts/Klim+Fonts/Domaine+Text/web-fonts/domaine-text-regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'DomaineText-Regular';
-    src: url('https://cdn.levine.org/uploads/fonts/Klim+Fonts/Domaine+Text/web-fonts/domaine-text-light-italic.woff2') format('woff2');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'DomaineText-Regular';
-    src: url('https://cdn.levine.org/uploads/fonts/Klim+Fonts/Domaine+Text/web-fonts/domaine-text-light.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
+  font-family: 'DomaineText-Regular';
+  src: url('./fonts/domaine-text-black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: block;
+}
 
-  @font-face {
-    font-family: 'Ligalex-Mono';
-    src: url('https://cdn.levine.org/uploads/fonts/LigaturizedFonts/Ligalex+Mono+Webfont/ligalexmono-webfont.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('./fonts/domaine-text-black-italic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+  font-display: block;
+}
 
-  }
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('./fonts/domaine-text-bold-italic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('./fonts/domaine-text-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('./fonts/domaine-text-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('./fonts/domaine-text-medium-italic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('./fonts/domaine-text-regular-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('./fonts/domaine-text-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('./fonts/domaine-text-light-italic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('./fonts/domaine-text-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Ligalex-Mono';
+  src: url('./fonts/ligalexmono-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+
+}
