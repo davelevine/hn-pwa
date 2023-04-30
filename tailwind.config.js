@@ -6,11 +6,12 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        'sm': '0.9125rem',
+        'sm': '0.875rem',
+        'base': '0.975rem',
       },
       fontFamily: {
-        sans: ['DomaineText-Regular', 'serif'],
-        mono: ['Ligalex-Mono', 'monospace']
+        sans: ['ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
       },
       colors: {
         blue: {

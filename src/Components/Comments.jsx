@@ -96,7 +96,7 @@ const CommentThread = React.memo(({ children: { content, user, time_ago, comment
 
 function Comments({ children: commentThreads }) {
   return (
-    <div className="flex flex-col pb-12 text-sm divide-y sm:text-base dark:divide-gray-700">
+    <div className="flex flex-col pb-12 text-base divide-y sm:text-base dark:divide-gray-700">
       {commentThreads}
     </div>
   );
