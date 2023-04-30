@@ -10,6 +10,8 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://cra.link/PWA
 
+/* eslint-disable no-restricted-globals */
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -29,7 +31,8 @@ export function register(config) {
       return;
     }
 
-    window.addEventListener('load', () => {
+    // Lazy load the service worker
+    const loadServiceWorker = () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
       if (isLocalhost) {
@@ -48,52 +51,115 @@ export function register(config) {
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
       }
-    });
+    };
+
+    if (document.readyState === 'complete') {
+      loadServiceWorker();
+    } else {
+      window.addEventListener('load', loadServiceWorker);
+    }
   }
 }
 
 function registerValidSW(swUrl, config) {
-  navigator.serviceWorker
-    .register(swUrl)
-    .then((registration) => {
-      registration.onupdatefound = () => {
-        const installingWorker = registration.installing;
-        if (installingWorker == null) {
-          return;
-        }
-        installingWorker.onstatechange = () => {
-          if (installingWorker.state === 'installed') {
-            if (navigator.serviceWorker.controller) {
-              // At this point, the updated precached content has been fetched,
-              // but the previous service worker will still serve the older
-              // content until all client tabs are closed.
-              console.log(
-                'New content is available and will be used when all ' +
-                  'tabs for this page are closed. See https://cra.link/PWA.'
-              );
+  // Use workbox-webpack-plugin to generate the service worker file
+  if ('workbox' in self) {
+    const wb = new self.Workbox(swUrl);
 
-              // Execute callback
-              if (config && config.onUpdate) {
-                config.onUpdate(registration);
-              }
-            } else {
-              // At this point, everything has been precached.
-              // It's the perfect time to display a
-              // "Content is cached for offline use." message.
-              console.log('Content is cached for offline use.');
+    // Cache images with CacheFirst strategy
+    wb.routing.registerRoute(
+      ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.png'),
+      new wb.strategies.CacheFirst({
+        cacheName: 'images',
+        plugins: [
+          new wb.expiration.ExpirationPlugin({ maxEntries: 50 }),
+          new wb.cacheableResponse.CacheableResponsePlugin({
+            statuses: [0, 200],
+          }),
+        ],
+      })
+    );
 
-              // Execute callback
-              if (config && config.onSuccess) {
-                config.onSuccess(registration);
+    // Cache API responses with StaleWhileRevalidate strategy
+    wb.routing.registerRoute(
+      ({ url }) => url.origin === self.location.origin && url.pathname.startsWith('/api/'),
+      new wb.strategies.StaleWhileRevalidate({
+        cacheName: 'api-responses',
+        plugins: [
+          new wb.expiration.ExpirationPlugin({ maxEntries: 50 }),
+          new wb.cacheableResponse.CacheableResponsePlugin({
+            statuses: [0, 200],
+          }),
+        ],
+      })
+    );
+
+    // This allows the web app to trigger skipWaiting via
+    // registration.waiting.postMessage({type: 'SKIP_WAITING'})
+    self.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+      }
+    });
+
+    wb.addEventListener('activated', (event) => {
+      if (!event.isUpdate) {
+        console.log('Service worker activated for the first time.');
+      } else {
+        console.log('Service worker updated.');
+      }
+
+      // Execute callback
+      if (config && config.onSuccess) {
+        config.onSuccess(event);
+      }
+    });
+
+    wb.register();
+  } else {
+    // If workbox is not available, use the default registration method
+    navigator.serviceWorker
+      .register(swUrl)
+      .then((registration) => {
+        registration.onupdatefound = () => {
+          const installingWorker = registration.installing;
+          if (installingWorker == null) {
+            return;
+          }
+          installingWorker.onstatechange = () => {
+            if (installingWorker.state === 'installed') {
+              if (navigator.serviceWorker.controller) {
+                // At this point, the updated precached content has been fetched,
+                // but the previous service worker will still serve the older
+                // content until all client tabs are closed.
+                console.log(
+                  'New content is available and will be used when all ' +
+                    'tabs for this page are closed. See https://cra.link/PWA.'
+                );
+
+                // Execute callback
+                if (config && config.onUpdate) {
+                  config.onUpdate(registration);
+                }
+              } else {
+                // At this point, everything has been precached.
+                // It's the perfect time to display a
+                // "Content is cached for offline use." message.
+                console.log('Content is cached for offline use.');
+
+                // Execute callback
+                if (config && config.onSuccess) {
+                  config.onSuccess(registration);
+                }
               }
             }
-          }
+          };
         };
-      };
-    })
-    .catch((error) => {
-      console.error('Error during service worker registration:', error);
-    });
+      })
+      .catch((error) => {
+        console.error('Error during service worker registration:', error);
+      });
+  }
 }
 
 function checkValidServiceWorker(swUrl, config) {

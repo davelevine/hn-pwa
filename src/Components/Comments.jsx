@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { CommentIcon, LinkIcon, ChevronUp, ChevronDown } from "./Icons";
 
-function ThreadTitle({ title, numComments, domain, timeAgo, user, time, url, score, children: content }) {
+const ThreadTitle = React.memo(({ title, numComments, domain, timeAgo, user, time, url, score, children: content }) => {
   return (
     <div className="flex flex-row items-center px-4 py-4 text-lg sm:pb-7">
       <div className="flex flex-col min-w-full">
@@ -36,9 +36,9 @@ function ThreadTitle({ title, numComments, domain, timeAgo, user, time, url, sco
       </div>
     </div>
   );
-}
+});
 
-function CommentInfo({ username, timeAgo }) {
+const CommentInfo = React.memo(({ username, timeAgo }) => {
   return (
     <div className="flex flex-row items-center justify-between sm:justify-start">
       { /* Handle deleted comments */
@@ -49,23 +49,23 @@ function CommentInfo({ username, timeAgo }) {
       <div className="mr-2 text-xs text-black dark:text-white text-opacity-80">{timeAgo}</div>
     </div>
   );
-}
+});
 
-function Comment({ children: body, username, timeAgo }) {
+const Comment = React.memo(({ children: body, username, timeAgo }) => {
   return (
     <div className="flex flex-col px-3 pt-4 pb-2 sm:p-4">
       <CommentInfo username={username} timeAgo={timeAgo} />
       <div className="pt-2">{body}</div>
     </div>
   );
-}
+});
 
-function CommentThread({ children: { content, user, time_ago, comments: commentThreads } }) {
+const CommentThread = React.memo(({ children: { content, user, time_ago, comments: commentThreads } }) => {
   const [visible, setVisible] = useState(false);
 
-  const toggle_visibility = () => {
+  const toggle_visibility = useCallback(() => {
     setVisible(!visible);
-  };
+  }, [visible]);
 
   return (
     <Comment username={user} timeAgo={time_ago}>
@@ -92,7 +92,7 @@ function CommentThread({ children: { content, user, time_ago, comments: commentT
         })}
     </Comment>
   )
-}
+});
 
 function Comments({ children: commentThreads }) {
   return (

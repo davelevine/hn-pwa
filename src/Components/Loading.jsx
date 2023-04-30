@@ -1,6 +1,6 @@
 import React from "react";
 
-function Loading({ size = "100px" }) {
+const Loading = React.memo(({ size = "100px" }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className="min-w-full" xlink="http://www.w3.org/1999/xlink"
       width={size} height={size} viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" >
@@ -26,6 +26,6 @@ function Loading({ size = "100px" }) {
       </g>
     </svg>
   );
-}
+});
 
 export default Loading;

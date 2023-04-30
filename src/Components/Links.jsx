@@ -9,7 +9,7 @@ import {
 
 import NextPage from "./NextPage";
 
-function Links({ children: results, currentPage, currentSort }) {
+const Links = React.memo(({ children: results, currentPage, currentSort }) => {
   return (
     <Results>
       {
@@ -37,6 +37,6 @@ function Links({ children: results, currentPage, currentSort }) {
       <NextPage currentPage={currentPage} currentSort={currentSort} />
     </Results>
   );
-}
+});
 
 export default Links;

@@ -1,4 +1,5 @@
 // Components
+import React, { useMemo } from "react";
 import { Navbar, NavItem } from "./Navbar";
 import {
   Route,
@@ -12,38 +13,40 @@ import Thread from "./Pages/Thread";
 import User from "./Pages/User";
 import ErrorHandler from "./Pages/ErrorHandler";
 
+const MemoNavItem = React.memo(NavItem);
+
 function App() {
   return (
     <div className="break-words dark:text-white">
       <Navbar>
-        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/news"><NavItem>Top</NavItem></NavLink>
-        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/newest"><NavItem>New</NavItem></NavLink>
-        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/ask"><NavItem>Ask</NavItem></NavLink>
-        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/show"><NavItem>Show</NavItem></NavLink>
-        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/jobs"><NavItem>Jobs</NavItem></NavLink>
+        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/news"><MemoNavItem>Top</MemoNavItem></NavLink>
+        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/newest"><MemoNavItem>New</MemoNavItem></NavLink>
+        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/ask"><MemoNavItem>Ask</MemoNavItem></NavLink>
+        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/show"><MemoNavItem>Show</MemoNavItem></NavLink>
+        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/jobs"><MemoNavItem>Jobs</MemoNavItem></NavLink>
       </Navbar>
 
       <main className="sm:px-8 md:px-16 lg:px-24 xl:px-32">
         <Switch>
           <Route path="/" exact>
-            <Home sort="news" />
+            <MemoizedHome sort="news" />
           </Route>
 
           {/* Handle category links */}
           <Route path="/news/:pageNum?">
-            <Home sort="news" />
+            <MemoizedHome sort="news" />
           </Route>
           <Route path="/newest/:pageNum?">
-            <Home sort="newest" />
+            <MemoizedHome sort="newest" />
           </Route>
           <Route path="/ask/:pageNum?">
-            <Home sort="ask" />
+            <MemoizedHome sort="ask" />
           </Route>
           <Route path="/show/:pageNum?">
-            <Home sort="show" />
+            <MemoizedHome sort="show" />
           </Route>
           <Route path="/jobs/:pageNum?">
-            <Home sort="jobs" />
+            <MemoizedHome sort="jobs" />
           </Route>
 
           {/* Handle discussion threads */}
@@ -67,5 +70,12 @@ function App() {
     </div>
   );
 }
+
+function HomeWrapper({ sort }) {
+  const memoizedHome = useMemo(() => <Home sort={sort} />, [sort]);
+  return memoizedHome;
+}
+
+const MemoizedHome = React.memo(HomeWrapper);
 
 export default App;

@@ -4,7 +4,8 @@ import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, matchPrecache, cleanupOutdatedCaches } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
-import { CacheFirst, NetworkFirst } from 'workbox-strategies';
+import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
+import { CacheableResponse } from 'workbox-cacheable-response';
 
 clientsClaim();
 
@@ -53,17 +54,23 @@ registerRoute(
     cacheName: 'images',
     plugins: [
       new ExpirationPlugin({ maxEntries: 50 }),
+      new CacheableResponse({
+        statuses: [0, 200],
+      }),
     ],
   })
 );
 
-// Cache API responses with NetworkFirst strategy
+// Cache API responses with StaleWhileRevalidate strategy
 registerRoute(
   ({ url }) => url.origin === self.location.origin && url.pathname.startsWith('/api/'),
-  new NetworkFirst({
+  new StaleWhileRevalidate({
     cacheName: 'api-responses',
     plugins: [
       new ExpirationPlugin({ maxEntries: 50 }),
+      new CacheableResponse({
+        statuses: [0, 200],
+      }),
     ],
   })
 );

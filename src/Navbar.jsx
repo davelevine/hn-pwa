@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 
 function NavItem({ children: item }) {
@@ -9,7 +9,11 @@ function NavItem({ children: item }) {
   );
 }
 
+const MemoNavItem = React.memo(NavItem);
+
 function Navbar({ children: navItems }) {
+  const memoizedNavItems = useMemo(() => navItems, [navItems]);
+
   return (
     <nav className="flex flex-row items-center justify-between pl-2 pr-6 text-white border-b-2 shadow bg-orange dark:bg-transparent border-orange">
 
@@ -23,7 +27,7 @@ function Navbar({ children: navItems }) {
 
       {/* Nav links */}
       <div className="flex flex-row space-x-0.5 sm:space-x-3">
-        {navItems}
+        {memoizedNavItems}
       </div>
     </nav>
   );
@@ -31,5 +35,5 @@ function Navbar({ children: navItems }) {
 
 export {
   Navbar,
-  NavItem
+  MemoNavItem as NavItem
 };

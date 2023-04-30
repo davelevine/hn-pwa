@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { CommentIcon } from "./Icons";
 
-function ResultTitle({ children: title, domain, url }) {
+const ResultTitle = React.memo(({ children: title, domain, url }) => {
   return (
     <div className="flex flex-row flex-wrap items-center">
       <a className="mr-2.5 font-bold" href={domain ? url : url.replace("item?id=", "/item/")} target="_blank" rel="nofollow noopener noreferrer">
@@ -11,18 +11,20 @@ function ResultTitle({ children: title, domain, url }) {
       <div className="text-xs text-black dark:text-white text-opacity-80">({domain ? domain : "self.hackernews"})</div>
     </div>
   );
-}
+});
 
-function ResultMetaData({ index, score }) {
+const ResultMetaData = React.memo(({ index, score }) => {
   return (
     <div className="flex flex-row justify-between sm:items-center sm:justify-start sm:w-24">
       {index && <div className="order-2 text-xs text-black dark:text-white sm:inline sm:order-1 text-opacity-80">{index}</div>}
       <div className="order-1 pr-2 text-lg font-bold sm:order-2 sm:pl-3 text-orange">{score}</div>
     </div>
   );
-}
+});
 
-function ResultInfo({ user, numComments, timeAgo, time, id }) {
+const ResultInfo = ({ user, numComments, time, id }) => {
+  const timeAgo = useMemo(() => getTimeAgo(time), [time]);
+
   return (
     <div className="flex flex-row text-sm text-black divide-x divide-black dark:divide-white dark:text-white text-opacity-80 divide-opacity-25">
 
@@ -43,9 +45,9 @@ function ResultInfo({ user, numComments, timeAgo, time, id }) {
 
     </div>
   );
-}
+};
 
-function Result({ children: [metaData, title, postInfo] }) {
+const Result = React.memo(({ children: [metaData, title, postInfo] }) => {
   return (
     <div className="flex flex-col px-4 py-4 sm:items-center sm:flex-row">
       {metaData}
@@ -56,14 +58,39 @@ function Result({ children: [metaData, title, postInfo] }) {
       </div>
     </div>
   );
-}
+});
 
-function Results({ children }) {
+const Results = React.memo(({ children }) => {
   return (
     <div className="flex flex-col divide-y dark:divide-gray-700">
       {children}
     </div>
   );
-}
+});
 
 export { Results, Result, ResultTitle, ResultMetaData, ResultInfo };
+
+function getTimeAgo(timestamp) {
+  const now = Date.now();
+  const secondsSince = Math.floor((now - timestamp * 1000) / 1000);
+
+  if (secondsSince < 60) {
+    return `${secondsSince} second${secondsSince === 1 ? "" : "s"} ago`;
+  }
+
+  const minutesSince = Math.floor(secondsSince / 60);
+
+  if (minutesSince < 60) {
+    return `${minutesSince} minute${minutesSince === 1 ? "" : "s"} ago`;
+  }
+
+  const hoursSince = Math.floor(minutesSince / 60);
+
+  if (hoursSince < 24) {
+    return `${hoursSince} hour${hoursSince === 1 ? "" : "s"} ago`;
+  }
+
+  const daysSince = Math.floor(hoursSince / 24);
+
+  return `${daysSince} day${daysSince === 1 ? "" : "s"} ago`;
+}
