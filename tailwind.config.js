@@ -8,6 +8,7 @@ module.exports = {
       fontSize: {
         'sm': '0.875rem',
         'base': '0.975rem',
+        'lg': '1.125rem',
       },
       fontFamily: {
         sans: ['ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
@@ -25,7 +26,7 @@ module.exports = {
         gray: colors.gray,
         orange: '#FF6600',
         black: '#111111',
-        white: '#FCFCFC',
+        white: '#FFFFFF',
         paper: '#f6f6ef',
       },
     },

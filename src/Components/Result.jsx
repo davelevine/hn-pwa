@@ -49,7 +49,7 @@ const ResultInfo = ({ user, numComments, time, id }) => {
 
 const Result = React.memo(({ children: [metaData, title, postInfo] }) => {
   return (
-    <div className="flex flex-col px-4 py-4 sm:items-center sm:flex-row">
+    <div className="flex flex-col px-4 py-5 sm:items-center sm:flex-row">
       {metaData}
 
       <div className="flex flex-col space-y-1">
