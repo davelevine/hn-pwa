@@ -21,7 +21,7 @@ module.exports = {
         },
         coal: {
           'light': '#323639',
-          'dark': '#202124'
+          'dark': '#27282d'
         },
         gray: colors.gray,
         orange: '#FF6600',
