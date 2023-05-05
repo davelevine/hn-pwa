@@ -20,10 +20,10 @@ function App() {
     <div className="break-words dark:text-white">
       <Navbar>
         <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/news"><MemoNavItem>Top</MemoNavItem></NavLink>
-        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/show"><MemoNavItem>Show</MemoNavItem></NavLink>
         <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/newest"><MemoNavItem>New</MemoNavItem></NavLink>
         <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/best"><MemoNavItem>Best</MemoNavItem></NavLink>
         <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/ask"><MemoNavItem>Ask</MemoNavItem></NavLink>
+        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/show"><MemoNavItem>Show</MemoNavItem></NavLink>
       </Navbar>
 
       <main className="sm:px-8 md:px-16 lg:px-24 xl:px-32">
