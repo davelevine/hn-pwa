@@ -3,7 +3,7 @@
 Progressive web app for browsing [Hacker News](https://en.wikipedia.org/wiki/Hacker_News). Focused on small touches missing from similar projects. 
 
 <p align="center">
-  <a href="https://hn-pwa.pages.dev" target="_blank">
+  <a href="https://hn.xdv.com" target="_blank">
     <img src="https://i.imgur.com/p7YxYmw.png" width="700px">
     <br>
     Live Demo
