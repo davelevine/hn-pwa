@@ -8,7 +8,7 @@ function User() {
   return (
     error || loading ||
     <div className="flex flex-col px-4 dark:text-gray-200">
-      <div className="pb-2 text-lg font-medium dark:text-white mt-7">{username}</div>
+      <div className="pb-2 text-lg font-medium dark:text-orange mt-7">{username}</div>
       <div>Created: {(new Date(res.created_at_i * 1000))
         .toLocaleString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
       </div>
