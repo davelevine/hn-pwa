@@ -7,9 +7,15 @@ const ThreadTitle = React.memo(({ title, numComments, domain, timeAgo, user, tim
     <div className="flex flex-row items-center px-4 py-4 text-lg sm:pb-7">
       <div className="flex flex-col min-w-full">
 
-        <div className="flex flex-row items-baseline space-x-2 sm:hidden">
-          <div className="font-semibold text-orange">{score}</div>
-          {domain && <div className="flex flex-row items-center order-1 text-sm text-black dark:text-white text-opacity-80">{domain}</div>}
+      <div className="flex flex-row items-baseline space-x-2 sm:hidden">
+        <div className="font-semibold text-orange">{score}</div>
+        {domain && (
+          <div className="flex flex-row items-center ml-2 text-sm text-black dark:text-white text-opacity-80" style={{ color: '#8CD8F9' }}>
+            <a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center">
+              <span className="ml-1">{domain}</span>
+            </a>
+          </div>
+        )}
         </div>
 
         <div className="flex flex-col items-start order-2 my-2">
@@ -26,8 +32,18 @@ const ThreadTitle = React.memo(({ title, numComments, domain, timeAgo, user, tim
             {timeAgo} by </time><Link className="pr-2 sm:pr-0 pl-0.5 font-semibold dark:hover:text-white hover:text-black" to={`/user/${user}`}>{user}</Link>
           </div>
 
-          <div className="flex flex-row items-center px-2 border-l sm:border-0"><CommentIcon size={15} />{numComments} {numComments === 1 ? "comment" : "comments"}</div>
-          {domain && <div className="flex-row items-center order-1 hidden pl-2 text-sm text-black sm:flex dark:text-white text-opacity-80"><LinkIcon size={15}/>{domain}</div>}
+        <div className="flex flex-row items-center px-2 border-l sm:border-0">
+          <CommentIcon size={15} />
+          {numComments} {numComments === 1 ? "comment" : "comments"}
+        </div>
+        {domain && (
+          <div className="flex-row items-center order-1 hidden pl-2 text-sm text-black sm:flex dark:text-white text-opacity-80" style={{ color: '#8CD8F9' }}>
+            <a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center">
+              <LinkIcon size={15} />
+              <span className="ml-0">{domain}</span>
+            </a>
+          </div>
+        )}
         </div>
 
         {content && <div className="order-4 mt-4 space-y-4 text-base"
@@ -43,13 +59,14 @@ const CommentInfo = React.memo(({ username, timeAgo }) => {
     <div className="flex flex-row items-center justify-between sm:justify-start">
       { /* Handle deleted comments */
         username && <div className="mr-2 font-medium">
-          <Link to={`/user/${username}`}>{username}</Link>
+          <Link to={`/user/${username}`} style={{color: '#8CD8F9'}}>{username}</Link>
         </div>
       }
       <div className="mr-2 text-xs text-black dark:text-white text-opacity-80">{timeAgo}</div>
     </div>
   );
 });
+
 
 const Comment = React.memo(({ children: body, username, timeAgo }) => {
   return (
