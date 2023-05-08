@@ -32,7 +32,7 @@ const ResultInfo = ({ user, numComments, time, id }) => {
         <span title={(new Date(time * 1000)).toLocaleString()}>
           {timeAgo}
         </span>
-        {user && <span> by <Link className="ml-1.5 hover:text-black dark:hover:text-white" to={`/user/${user}`}><b>{user}</b></Link></span>}
+        {user && <span> by <Link className="ml-1.5 hover:text-black dark:hover:text-white" to={`/user/${user}`} style={{color: '#FF6600'}}><b>{user}</b></Link></span>}
       </div>
 
       <Link to={`/item/${id}`}>
