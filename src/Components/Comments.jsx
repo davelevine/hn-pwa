@@ -62,7 +62,7 @@ const CommentInfo = React.memo(({ username, timeAgo }) => {
           <Link to={`/user/${username}`} style={{color: '#FF6600'}}>{username}</Link>
         </div>
       }
-      <div className="mr-2 text-xs text-black dark:text-white text-opacity-80">{timeAgo}</div>
+      <div className="mr-2 text-sm text-black dark:text-white text-opacity-80">{timeAgo}</div>
     </div>
   );
 });

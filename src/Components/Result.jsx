@@ -8,7 +8,7 @@ const ResultTitle = React.memo(({ children: title, domain, url }) => {
       <a className="mr-2.5 font-bold" href={domain ? url : url.replace("item?id=", "/item/")} target="_blank" rel="nofollow noopener noreferrer">
         {title}
       </a>
-      <div className="text-xs text-black dark:text-white text-opacity-80">({domain ? domain : "self.hackernews"})</div>
+      <div className="text-sm text-black dark:text-white text-opacity-80">({domain ? domain : "self.hackernews"})</div>
     </div>
   );
 });
@@ -16,7 +16,7 @@ const ResultTitle = React.memo(({ children: title, domain, url }) => {
 const ResultMetaData = React.memo(({ index, score }) => {
   return (
     <div className="flex flex-row justify-between sm:items-center sm:justify-start sm:w-24">
-      {index && <div className="order-2 text-xs text-black dark:text-white sm:inline sm:order-1 text-opacity-80">{index}</div>}
+      {index && <div className="order-2 text-sm text-black dark:text-white sm:inline sm:order-1 text-opacity-80">{index}</div>}
       <div className="order-1 pr-2 text-lg font-bold sm:order-2 sm:pl-3 text-orange">{score}</div>
     </div>
   );
