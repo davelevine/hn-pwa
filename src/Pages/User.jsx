@@ -10,7 +10,7 @@ function User() {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     const decodedText = he.decode(text);
     const newText = decodedText.replace(urlRegex, (url) => {
-      return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #8CD8F9">${url}</a>`;
     });
     console.log(newText); // add this line to check if URLs are being matched
     return newText;
