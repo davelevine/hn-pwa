@@ -6,15 +6,36 @@ function User() {
   const { username } = useParams();
   const [loading, res, error] = useFetch(`https://hn.algolia.com/api/v1/users/${username}.json`);
 
-  const makeUrlsClickable = (text) => {
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const decodedText = he.decode(text);
-    const newText = decodedText.replace(urlRegex, (url) => {
-      return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #8CD8F9">${url}</a>`;
-    });
-    console.log(newText); // add this line to check if URLs are being matched
-    return newText;
-  };
+const makeUrlsClickable = (text) => {
+  // regex to match URLs with or without http/https prefixes, accounting for special characters
+  const urlRegex = /((?:https?:\/\/)?(?:www\.)?[^\s;"'<>()[\]{}|\\^`]+(\.[^\s;"'<>()[\]{}|\\^`]+)+[^\s;"'<>()[\]{}|\\^`.,;:?])/g;
+  // regex to match email addresses
+  const emailRegex = /([^\s]+@[^\s]+\.[^\s]+)/g;
+  // decode text to handle HTML entities
+  const decodedText = he.decode(text);
+  // replace words with links if they match the email or URL regex
+  const newText = decodedText.replace(/(^|\s)([^\s]+)/g, (match, leadingSpace, word) => {
+    // check if word matches email regex
+    if (emailRegex.test(word)) {
+      // if so, create mailto link
+      return leadingSpace + `<a href="mailto:${word}" style="color: #8CD8F9">${word}</a>`;
+    } else {
+      // check if word matches URL regex
+      const urlMatch = word.match(urlRegex);
+      if (urlMatch) {
+        // get matched URL and add http/https prefix if necessary
+        const url = urlMatch[0].startsWith("http") ? urlMatch[0] : "https://" + urlMatch[0];
+        // create link with target="_blank" to open in new tab
+        return leadingSpace + `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color:#8CD8F9">${url}</a>` + word.slice(urlMatch[0].length);
+      } else {
+        // if neither email nor URL, return original word
+        return leadingSpace + word;
+      }
+    }
+  });
+  // return new text with links
+  return newText;
+};
 
   const about = res?.about && makeUrlsClickable(res.about);
 
