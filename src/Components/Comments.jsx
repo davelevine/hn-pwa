@@ -29,7 +29,7 @@ const ThreadTitle = React.memo(({ title, numComments, domain, timeAgo, user, tim
           <div className="hidden mr-2 font-medium sm:flex">{score} points</div>
 
           <div className="sm:px-2"><time title={(new Date(time * 1000)).toLocaleString()}>
-            {timeAgo} by </time><Link className="pr-2 sm:pr-0 pl-0.5 font-semibold dark:hover:text-orange hover:text-black" to={`/user/${user}`}>{user}</Link>
+            {timeAgo} by </time><Link className="pr-2 sm:pr-0 pl-0.5 font-semibold dark:hover:text-orange hover:text-black" to={`/user/${user}`} style={{color: '#FF6600'}}>{user}</Link>
           </div>
 
         <div className="flex flex-row items-center px-2 border-l sm:border-0">
