@@ -4,9 +4,9 @@ Progressive web app for browsing [Hacker News](https://en.wikipedia.org/wiki/Hac
 
 <p align="center">
   <a href="https://hn.xdv.com" target="_blank">
-    <img src="https://i.imgur.com/p7YxYmw.png" width="700px">
+    <img src="https://cdn.levine.org/uploads/images/gallery/2023-05/hnpwa_desktop.png" width="700px">
     <br>
-    Live Demo
+    <img src="https://cdn.levine.org/uploads/images/gallery/2023-05/hnpwa_mobile.png" height="700px">
   </a>
 </p>
 
