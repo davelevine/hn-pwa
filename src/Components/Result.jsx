@@ -14,13 +14,38 @@ const ResultTitle = React.memo(({ children: title, domain, url }) => {
 });
 
 const ResultMetaData = React.memo(({ index, score }) => {
+  const hasIndex = index !== undefined && index !== null;
+  const hasScore = score !== undefined && score !== null;
+
   return (
     <div className="flex flex-row justify-between sm:items-center sm:justify-start sm:w-24">
-      {index && <div className="order-2 text-sm text-black dark:text-white sm:inline sm:order-1 text-opacity-80">{index}</div>}
-      <div className="order-1 pr-2 text-lg font-bold sm:order-2 sm:pl-3 text-orange">{score}</div>
+      {hasIndex && <div className="order-2 text-sm text-black dark:text-white sm:inline sm:order-1 text-opacity-80">{index}</div>}
+      <div className="order-1 pr-2 text-lg font-bold sm:order-2 sm:pl-3 text-orange">
+        {hasScore ? (
+          <>
+            {score}
+            {hasIndex && (
+              <span className="text-green" style={{ fontWeight: "bold" }}>
+                {" "}
+                &#x25B2;
+              </span>
+            )}
+          </>
+        ) : (
+          <>
+            0
+            <span className="text-green" style={{ fontWeight: "bold" }}>
+              {" "}
+              &#x25B2;
+            </span>
+          </>
+        )}
+      </div>
     </div>
   );
 });
+
+
 
 const ResultInfo = ({ user, numComments, time, id }) => {
   const timeAgo = useMemo(() => getTimeAgo(time), [time]);
