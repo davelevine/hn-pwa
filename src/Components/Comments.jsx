@@ -18,8 +18,8 @@ const ThreadTitle = React.memo(({ title, numComments, domain, timeAgo, user, tim
         )}
         </div>
 
-        <div className="flex flex-col items-start order-2 my-2">
-          <a className="mr-2 font-semibold sm:text-xl lg:text-2xl" target="_blank" rel="nofollow noopener noreferrer" href={url}>
+        <div className="flex flex-col items-start order-2 my-3">
+          <a className="mr-2 font-medium sm:text-xl lg:text-2xl" target="_blank" rel="nofollow noopener noreferrer" href={url}>
             {title}
           </a>
         </div>
@@ -86,7 +86,7 @@ const CommentThread = React.memo(({ children: { content, user, time_ago, comment
 
   return (
     <Comment username={user} timeAgo={time_ago}>
-      <div className="space-y-2 comment-body"
+      <div className="space-y-3 comment-body"
         dangerouslySetInnerHTML={{ __html: content.replace(/rel="nofollow"/g, `rel="nofollow noopener noreferrer" target="_blank"`) }}>
       </div>
 
