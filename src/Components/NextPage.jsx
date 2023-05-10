@@ -17,26 +17,31 @@ const NextPage = React.memo(({ currentPage, currentSort }) => {
     return null;
   }, [currentPage, currentSort]);
 
-  return (
-    <div className="flex flex-row py-4 justify-evenly">
-      {handlePreviousPage() && (
-        <Link to={handlePreviousPage()}>
-          <div className="flex flex-row items-center px-4 py-2 font-bold text-center rounded-md dark:hover:bg-white hover:bg-black hover:bg-opacity-10 focus-within:outline-none">
+return (
+  <div className="flex flex-row py-4 justify-evenly">
+    {handlePreviousPage() && (
+      <Link to={handlePreviousPage()}>
+        <div className="flex flex-row items-center px-4 py-2 font-bold text-center rounded-md dark:hover:bg-white hover:bg-black hover:bg-opacity-10 focus-within:outline-none">
+          <div className="flex items-center" style={{marginTop: "-3px"}}>
             <PreviousIcon size={16} />
-            <div className="ml-2">Previous Page</div>
           </div>
-        </Link>
-      )}
-      {handleNextPage() && (
-        <Link to={handleNextPage()}>
-          <div className="flex flex-row items-center px-4 py-2 font-bold text-center rounded-md dark:hover:bg-white hover:bg-black hover:bg-opacity-10 focus-within:outline-none">
-            <div className="mr-2">Next Page</div>
+          <div className="ml-2">Previous Page</div>
+        </div>
+      </Link>
+    )}
+    {handleNextPage() && (
+      <Link to={handleNextPage()}>
+        <div className="flex flex-row items-center justify-end px-4 py-2 font-bold text-center rounded-md dark:hover:bg-white hover:bg-black hover:bg-opacity-10 focus-within:outline-none">
+          <div className="mr-2">Next Page</div>
+          <div className="flex items-center">
             <NextIcon size={20} />
           </div>
-        </Link>
-      )}
-    </div>
-  );
+        </div>
+      </Link>
+    )}
+  </div>
+);
+
 });
 
 export default NextPage;
