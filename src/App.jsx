@@ -17,11 +17,42 @@ function App() {
   return (
     <div className="break-words dark:text-white">
       <Navbar>
-        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/news"><NavItem>Top</NavItem></NavLink>
-        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/newest"><NavItem>New</NavItem></NavLink>
-        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/best"><NavItem>Best</NavItem></NavLink>
-        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/ask"><NavItem>Ask</NavItem></NavLink>
-        <NavLink activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange" to="/show"><NavItem>Show</NavItem></NavLink>
+        <NavLink
+          activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange"
+          to="/news"
+          isActive={(match, location) => {
+            if (!match && location.pathname === "/") {
+              return true;
+            }
+            return match;
+          }}
+        >
+          <NavItem>Top</NavItem>
+        </NavLink>
+        <NavLink
+          activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange"
+          to="/newest"
+        >
+          <NavItem>New</NavItem>
+        </NavLink>
+        <NavLink
+          activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange"
+          to="/best"
+        >
+          <NavItem>Best</NavItem>
+        </NavLink>
+        <NavLink
+          activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange"
+          to="/ask"
+        >
+          <NavItem>Ask</NavItem>
+        </NavLink>
+        <NavLink
+          activeClassName="bg-opacity-10 bg-black rounded-md dark:text-orange"
+          to="/show"
+        >
+          <NavItem>Show</NavItem>
+        </NavLink>
       </Navbar>
 
       <main className="sm:px-8 md:px-16 lg:px-24 xl:px-32">
@@ -58,14 +89,14 @@ function App() {
           </Route>
 
           {/* Handle all other routes */}
-<Route path="*">
-  <ErrorHandler error="">
-    <>
-      <span style={{ fontSize: '24px', display: 'block' }}>404 error</span>
-      <span style={{ display: 'block' }}>Not all those who wander are lost, but you are.</span>
-    </>
-  </ErrorHandler>
-</Route>
+          <Route path="*">
+            <ErrorHandler error="">
+              <>
+                <span style={{ fontSize: '24px', display: 'block' }}>404 error</span>
+                <span style={{ display: 'block' }}>Not all those who wander are lost, but you are.</span>
+              </>
+            </ErrorHandler>
+          </Route>
 
         </Switch>
       </main>
