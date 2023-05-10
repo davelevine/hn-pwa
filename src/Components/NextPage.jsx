@@ -21,8 +21,8 @@ const NextPage = React.memo(({ currentPage, currentSort }) => {
     <div className="flex flex-row py-4 justify-evenly">
       {handlePreviousPage() && (
         <Link to={handlePreviousPage()}>
-          <div className="flex flex-row items-center px-4 py-2 font-medium text-center rounded-md dark:hover:bg-white hover:bg-black hover:bg-opacity-10 focus-within:outline-none">
-            <PreviousIcon size={20} />
+          <div className="flex flex-row items-center px-4 py-2 font-bold text-center rounded-md dark:hover:bg-white hover:bg-black hover:bg-opacity-10 focus-within:outline-none">
+            <PreviousIcon size={16} />
             <div className="ml-2">Previous Page</div>
           </div>
         </Link>
