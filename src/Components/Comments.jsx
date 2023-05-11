@@ -85,7 +85,7 @@ const CommentThread = React.memo(({ children: { content, user, time_ago, comment
 
   return (
     <Comment username={user} timeAgo={time_ago}>
-      <div className="space-y-3 comment-body"
+      <div className="space-y-3 comment-body text-justify"
         dangerouslySetInnerHTML={{ __html: content.replace(/rel="nofollow"/g, `rel="nofollow noopener noreferrer" target="_blank"`) }}>
       </div>
 

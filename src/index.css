@@ -15,6 +15,13 @@ body {
     @apply overflow-y-scroll bg-white dark:bg-coal-dark;
 }
 
+/* Mobile only CSS */
+@media (max-width: 640px) {
+  .comment-body {
+    text-align: left !important;
+  }
+}
+
 /* Untitled Sans */
 @font-face {
   font-family: 'Untitled-Sans';
