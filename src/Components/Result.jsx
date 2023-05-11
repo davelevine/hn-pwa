@@ -20,7 +20,7 @@ const ResultMetaData = React.memo(({ index, score }) => {
   return (
     <div className="flex flex-row justify-between sm:items-center sm:justify-start sm:w-24">
       {hasIndex && <div className="order-2 text-md text-black dark:text-white sm:inline sm:order-1 text-opacity-80">{index}</div>}
-      <div className="order-1 pr-2 text-lg font-bold sm:order-2 sm:pl-3 text-orange">
+      <div className="order-1 pr-2 text-lg font-medium sm:order-2 sm:pl-3 text-orange">
         {hasScore ? (
           <>
             {score}
