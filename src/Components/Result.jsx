@@ -5,7 +5,7 @@ import { CommentIcon } from "./Icons";
 const ResultTitle = React.memo(({ children: title, domain, url }) => {
   return (
     <div className="flex flex-row flex-wrap items-center">
-      <a className="mr-2.5 font-bold" href={domain ? url : url.replace("item?id=", "/item/")} target="_blank" rel="nofollow noopener noreferrer">
+      <a className="mr-2.5 font-title" href={domain ? url : url.replace("item?id=", "/item/")} target="_blank" rel="nofollow noopener noreferrer">
         {title}
       </a>
       <div className="text-sm text-black dark:text-white text-opacity-80">({domain ? domain : "self.hackernews"})</div>
@@ -53,11 +53,11 @@ const ResultInfo = ({ user, numComments, time, id }) => {
   return (
     <div className="flex flex-row text-sm text-black divide-x divide-black dark:divide-white dark:text-white text-opacity-80 divide-opacity-25">
 
-      <div className="py-1 pr-2">
+      <div className="py-1 pr-2 text-sm">
         <span title={(new Date(time * 1000)).toLocaleString()}>
           {timeAgo}
         </span>
-        {user && <span> by <Link className="ml-1.5 hover:text-black dark:hover:text-white" to={`/user/${user}`} style={{color: '#FF6600'}}><b>{user}</b></Link></span>}
+        {user && <span> by <Link className="ml-1.5 hover:text-black dark:hover:text-white" to={`/user/${user}`} style={{color: '#FF6600'}}>{user}</Link></span>}
       </div>
 
       <Link to={`/item/${id}`}>

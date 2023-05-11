@@ -8,7 +8,7 @@ const ThreadTitle = React.memo(({ title, numComments, domain, timeAgo, user, tim
       <div className="flex flex-col min-w-full">
 
       <div className="flex flex-row items-baseline space-x-2 sm:hidden">
-        <div className="font-semibold text-orange">{score}</div>
+        <div className="font-medium text-orange">{score}</div>
         {domain && (
           <div className="flex flex-row items-center ml-2 text-sm text-black dark:text-white text-opacity-80" style={{ color: '#8CD8F9' }}>
             <a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center">
@@ -19,7 +19,7 @@ const ThreadTitle = React.memo(({ title, numComments, domain, timeAgo, user, tim
         </div>
 
         <div className="flex flex-col items-start order-2 my-3">
-          <a className="mr-2 font-medium sm:text-xl lg:text-2xl font-serif" target="_blank" rel="nofollow noopener noreferrer" href={url}>
+          <a className="mr-2 font-medium sm:text-xl lg:text-2xl font-title" target="_blank" rel="nofollow noopener noreferrer" href={url}>
             {title}
           </a>
         </div>
@@ -28,7 +28,7 @@ const ThreadTitle = React.memo(({ title, numComments, domain, timeAgo, user, tim
           <div className="hidden mr-2 font-medium sm:flex">{score} points</div>
 
           <div className="sm:px-2"><time title={(new Date(time * 1000)).toLocaleString()}>
-            {timeAgo} by </time><Link className="pr-2 sm:pr-0 pl-0.5 font-semibold dark:hover:text-orange hover:text-black" to={`/user/${user}`} style={{color: '#FF6600'}}>{user}</Link>
+            {timeAgo} by </time><Link className="pr-2 sm:pr-0 pl-0.5 font-medium dark:hover:text-orange hover:text-black" to={`/user/${user}`} style={{color: '#FF6600'}}>{user}</Link>
           </div>
 
         <div className="flex flex-row items-center px-2 border-l sm:border-0">
@@ -57,7 +57,7 @@ const CommentInfo = React.memo(({ username, timeAgo }) => {
   return (
     <div className="flex flex-row items-center justify-between sm:justify-start">
       { /* Handle deleted comments */
-        username && <div className="mr-2 font-medium">
+        username && <div className="mr-2 text-sm font-medium">
           <Link to={`/user/${username}`} style={{color: '#FF6600'}}>{username}</Link>
         </div>
       }
@@ -91,7 +91,7 @@ const CommentThread = React.memo(({ children: { content, user, time_ago, comment
 
       { /* Collapsable comment threads */
         commentThreads.length !== 0 ? (
-          <button className="flex flex-row items-center justify-end w-full py-2 space-x-2 font-medium focus-within:outline-none" onClick={toggle_visibility}>
+          <button className="flex flex-row items-center justify-end w-full py-2 space-x-2 text-sm font-medium focus-within:outline-none" onClick={toggle_visibility}>
             <div>{visible ? "Hide" : "Show"} {commentThreads.length} {commentThreads.length > 1 ? "replies" : "reply"}</div>
             {visible ? <ChevronUp /> : <ChevronDown />}
           </button>

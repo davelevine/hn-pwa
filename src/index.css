@@ -63,3 +63,13 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
+/* Domaine Text */
+
+@font-face {
+  font-family: 'Domaine-Text';
+  src: url('../src/fonts/domaine-text-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
