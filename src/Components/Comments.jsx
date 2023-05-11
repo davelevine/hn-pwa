@@ -19,11 +19,10 @@ const ThreadTitle = React.memo(({ title, numComments, domain, timeAgo, user, tim
         </div>
 
         <div className="flex flex-col items-start order-2 my-3">
-          <a className="mr-2 font-medium sm:text-xl lg:text-2xl" target="_blank" rel="nofollow noopener noreferrer" href={url}>
+          <a className="mr-2 font-medium sm:text-xl lg:text-2xl font-serif" target="_blank" rel="nofollow noopener noreferrer" href={url}>
             {title}
           </a>
         </div>
-
 
         <div className="flex flex-row flex-wrap order-3 text-sm text-black divide-black sm:divide-x dark:text-white text-opacity-80 dark:divide-white divide-opacity-25 sm:order-2">
           <div className="hidden mr-2 font-medium sm:flex">{score} points</div>
