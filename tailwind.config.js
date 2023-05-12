@@ -19,7 +19,7 @@ module.exports = {
       },
       colors: {
         blue: {
-          300: '#8cd8f9',
+          300: '#7ec7e8',
           700: '#174fce',
         },
         coal: {

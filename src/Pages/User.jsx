@@ -18,7 +18,7 @@ const makeUrlsClickable = (text) => {
     // check if word matches email regex
     if (emailRegex.test(word)) {
       // if so, create mailto link
-      return leadingSpace + `<a href="mailto:${word}" style="color: #8CD8F9">${word}</a>`;
+      return leadingSpace + `<a href="mailto:${word}" style="color: #7ec7e8">${word}</a>`;
     } else {
       // check if word matches URL regex
       const urlMatch = word.match(urlRegex);
@@ -26,7 +26,7 @@ const makeUrlsClickable = (text) => {
         // get matched URL and add http/https prefix if necessary
         const url = urlMatch[0].startsWith("http") ? urlMatch[0] : "https://" + urlMatch[0];
         // create link with target="_blank" to open in new tab
-        return leadingSpace + `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color:#8CD8F9">${url}</a>` + word.slice(urlMatch[0].length);
+        return leadingSpace + `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color:#7ec7e8">${url}</a>` + word.slice(urlMatch[0].length);
       } else {
         // if neither email nor URL, return original word
         return leadingSpace + word;
