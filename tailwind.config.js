@@ -12,10 +12,10 @@ module.exports = {
         'lg': '1.125rem',
       },
       fontFamily: {
-        sans: ['Untitled-Sans'],
+        sans: ['Untitled-Sans', 'ui-sans'],
         serif: ['ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
-        title: ['Domaine-Text', 'ui-serif'], // new font family for titles
+        title: ['Tiempos', 'ui-serif'], // new font family for titles
       },
       colors: {
         blue: {
