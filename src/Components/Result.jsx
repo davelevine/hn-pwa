@@ -4,7 +4,7 @@ import { CommentIcon } from "./Icons";
 
 const ResultTitle = React.memo(({ children: title, domain, url }) => {
   return (
-    <div className="flex flex-row flex-wrap items-center">
+    <div className="flex flex-row flex-wrap font-medium items-center">
       <a className="mr-2.5 font-title" href={domain ? url : url.replace("item?id=", "/item/")} target="_blank" rel="nofollow noopener noreferrer">
         {title}
       </a>

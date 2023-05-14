@@ -10,7 +10,7 @@ const ThreadTitle = React.memo(({ title, numComments, domain, timeAgo, user, tim
       <div className="flex flex-row items-baseline space-x-2 sm:hidden">
         <div className="font-medium text-orange">{score}</div>
         {domain && (
-          <div className="flex flex-row items-center ml-2 text-sm text-black dark:text-white text-opacity-80" style={{ color: '#7ec7e8' }}>
+          <div className="flex flex-row font-medium items-center ml-2 text-sm text-black dark:text-white text-opacity-80" style={{ color: '#7ec7e8' }}>
             <a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center">
               <span className="ml-1">{domain}</span>
             </a>
@@ -36,7 +36,7 @@ const ThreadTitle = React.memo(({ title, numComments, domain, timeAgo, user, tim
           {numComments} {numComments === 1 ? "comment" : "comments"}
         </div>
         {domain && (
-          <div className="flex-row items-center order-1 hidden pl-2 text-sm text-black sm:flex dark:text-white text-opacity-80" style={{ color: '#7ec7e8' }}>
+          <div className="flex-row font-medium items-center order-1 hidden pl-2 text-sm text-black sm:flex dark:text-white text-opacity-80" style={{ color: '#7ec7e8' }}>
             <a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center">
               <LinkIcon size={15} />
               <span className="ml-0">{domain}</span>
