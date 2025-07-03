@@ -1,5 +1,4 @@
-// Components
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import { Navbar, NavItem } from "./Navbar";
 import {
   Route,
@@ -14,6 +13,19 @@ import User from "./Pages/User";
 import ErrorHandler from "./Pages/ErrorHandler";
 
 function App() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.defer = true;
+    script.src = "https://stats.levine.io/script.js";
+    script.setAttribute("data-website-id", "9ad6936e-adc3-48d9-87a6-04f87db5b607");
+    document.head.appendChild(script);
+
+    // Optional cleanup if needed
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   return (
     <div className="break-words dark:text-white">
       <Navbar>
