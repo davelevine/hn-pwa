@@ -5,7 +5,7 @@ import useFetch from "../Helpers/useFetch";
 
 function Thread() {
   const { itemId } = useParams();
-  const [loading, res, error] = useFetch(`https://api.xdv.com/item/${itemId}`);
+  const [loading, res, error] = useFetch(`https://node-hnapi.vercel.app/item/${itemId}`);
 
   return (
     error || loading ||
